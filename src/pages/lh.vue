@@ -10,12 +10,11 @@ const settings = {
     effect: -0.75, // play with this for a nice effect
     size: 30, // particle size in pixels
   },
-};
+}
 
 /*
  * RequestAnimationFrame polyfill by Erik Möller
  */
-(function () { let b = 0; const c = ['ms', 'moz', 'webkit', 'o']; for (let a = 0; a < c.length && !window.requestAnimationFrame; ++a) { window.requestAnimationFrame = window[`${c[a]}RequestAnimationFrame`]; window.cancelAnimationFrame = window[`${c[a]}CancelAnimationFrame`] || window[`${c[a]}CancelRequestAnimationFrame`] } if (!window.requestAnimationFrame) { window.requestAnimationFrame = function (h, e) { const d = new Date().getTime(); const f = Math.max(0, 16 - (d - b)); const g = window.setTimeout(() => { h(d + f) }, f); b = d + f; return g } } if (!window.cancelAnimationFrame) { window.cancelAnimationFrame = function (d) { clearTimeout(d) } } }())
 
 /*
  * Point class
@@ -237,6 +236,8 @@ const init = function (canvas) {
 const pinkboard = ref()
 
 onMounted(() => {
+  (function () { let b = 0; const c = ['ms', 'moz', 'webkit', 'o']; for (let a = 0; a < c.length && !window.requestAnimationFrame; ++a) { window.requestAnimationFrame = window[`${c[a]}RequestAnimationFrame`]; window.cancelAnimationFrame = window[`${c[a]}CancelAnimationFrame`] || window[`${c[a]}CancelRequestAnimationFrame`] } if (!window.requestAnimationFrame) { window.requestAnimationFrame = function (h, e) { const d = new Date().getTime(); const f = Math.max(0, 16 - (d - b)); const g = window.setTimeout(() => { h(d + f) }, f); b = d + f; return g } } if (!window.cancelAnimationFrame) { window.cancelAnimationFrame = function (d) { clearTimeout(d) } } }())
+
   pinkboard.value && init(pinkboard.value)
 })
 </script>
